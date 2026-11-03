@@ -1,0 +1,369 @@
+/**
+ * DocCare Clinic - Custom Medical Stylesheet
+ * Blue-and-White Theme with Modern Aesthetics
+ */
+
+:root {
+    --doc-primary: #1a56db;
+    --doc-primary-hover: #1342a8;
+    --doc-primary-light: #ebf5ff;
+    --doc-secondary: #0e9f6e;
+    --doc-accent: #06b6d4;
+    --doc-dark: #1e293b;
+    --doc-muted: #64748b;
+    --doc-border: #e2e8f0;
+    --doc-bg-soft: #f8fafc;
+    --doc-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --doc-card-shadow-hover: 0 10px 15px -3px rgba(26, 86, 219, 0.1), 0 4px 6px -4px rgba(26, 86, 219, 0.1);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--doc-dark);
+    background-color: var(--doc-bg-soft);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-text {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+/* ----------------------------------------------------
+   Brand Logo
+---------------------------------------------------- */
+.brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--doc-primary), #3b82f6);
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 10px rgba(26, 86, 219, 0.25);
+}
+
+.brand-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.brand-primary {
+    color: var(--doc-primary);
+}
+
+.brand-secondary {
+    color: var(--doc-dark);
+}
+
+.brand-tagline {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--doc-accent);
+    margin-left: 4px;
+}
+
+/* ----------------------------------------------------
+   Navigation & Header
+---------------------------------------------------- */
+.main-navbar {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    color: #475569;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--doc-primary);
+    background-color: var(--doc-primary-light);
+}
+
+/* ----------------------------------------------------
+   Hero Banner Section
+---------------------------------------------------- */
+.hero-section {
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #eef6ff 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 0 4rem;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #0f172a;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--doc-primary), #0284c7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ----------------------------------------------------
+   Avatars
+---------------------------------------------------- */
+.avatar-circle-sm {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.avatar-circle-md {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--doc-primary), #3b82f6);
+    color: #ffffff;
+}
+
+.avatar-circle-lg {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--doc-primary), #2563eb);
+    color: #ffffff;
+}
+
+/* ----------------------------------------------------
+   Doctor Profile Cards
+---------------------------------------------------- */
+.doctor-card {
+    transition: all 0.25s ease-in-out;
+    border: 1px solid var(--doc-border);
+    border-radius: 1rem;
+    background-color: #ffffff;
+}
+
+.doctor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--doc-card-shadow-hover);
+    border-color: #bfdbfe;
+}
+
+.doc-avatar-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.doc-status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.doc-status-dot.active {
+    background-color: #10b981;
+}
+
+.doc-status-dot.inactive {
+    background-color: #94a3b8;
+}
+
+/* ----------------------------------------------------
+   Stat Cards (Dashboards)
+---------------------------------------------------- */
+.stat-card {
+    border-radius: 1rem;
+    border: 1px solid var(--doc-border);
+    background: #ffffff;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--doc-card-shadow);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.stat-icon.primary { background: #eff6ff; color: #1d4ed8; }
+.stat-icon.success { background: #f0fdf4; color: #15803d; }
+.stat-icon.warning { background: #fefce8; color: #a16207; }
+.stat-icon.danger  { background: #fef2f2; color: #b91c1c; }
+.stat-icon.info    { background: #ecfeff; color: #0e7490; }
+
+/* ----------------------------------------------------
+   Sidebar Navigation
+---------------------------------------------------- */
+.dashboard-sidebar .list-group-item {
+    color: #475569;
+    transition: all 0.15s ease-in-out;
+    font-weight: 500;
+}
+
+.dashboard-sidebar .list-group-item:hover {
+    background-color: var(--doc-primary-light);
+    color: var(--doc-primary);
+}
+
+.dashboard-sidebar .list-group-item.active {
+    background-color: var(--doc-primary) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(26, 86, 219, 0.25);
+}
+
+/* ----------------------------------------------------
+   Time Slot Picker Grid (Appointment Booking)
+---------------------------------------------------- */
+.slot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.65rem;
+}
+
+.slot-radio {
+    display: none;
+}
+
+.slot-label {
+    display: block;
+    padding: 0.6rem 0.5rem;
+    text-align: center;
+    border: 1.5px solid var(--doc-border);
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.slot-label:hover:not(.disabled) {
+    border-color: var(--doc-primary);
+    background-color: var(--doc-primary-light);
+    color: var(--doc-primary);
+}
+
+.slot-radio:checked + .slot-label {
+    border-color: var(--doc-primary);
+    background-color: var(--doc-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(26, 86, 219, 0.3);
+}
+
+.slot-label.disabled {
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    text-decoration: line-through;
+    opacity: 0.65;
+}
+
+/* ----------------------------------------------------
+   Tables & Badges
+---------------------------------------------------- */
+.table-custom {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-custom thead th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-top: 0;
+    border-bottom: 1.5px solid var(--doc-border);
+    padding: 0.85rem 1rem;
+}
+
+.table-custom tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-top: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: #f8fafc;
+}
+
+/* ----------------------------------------------------
+   Utilities & Micro-interactions
+---------------------------------------------------- */
+.hover-scale {
+    transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.15);
+}
+
+.hover-link:hover {
+    color: var(--doc-primary) !important;
+}
+
+.badge {
+    font-weight: 600;
+    padding: 0.45em 0.75em;
+    border-radius: 6px;
+}
+
+.bg-gradient-light {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+}

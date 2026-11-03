@@ -1,0 +1,99 @@
+========================================================================
+   DOCCARE - DOCTOR APPOINTMENT SYSTEM (PHP & MYSQL)
+   SETUP & EXECUTION GUIDE (STEP-BY-STEP)
+========================================================================
+
+Thank you for downloading DocCare. This guide explains what software you
+need to run this project and the exact steps to get it running in 2 minutes.
+
+------------------------------------------------------------------------
+1. WHAT YOU NEED TO RUN THIS PROJECT (PREREQUISITES)
+------------------------------------------------------------------------
+You only need ONE free software package:
+
+- XAMPP (Apache + MySQL/MariaDB + PHP)
+  Download free from: https://www.apachefriends.org/
+  (Compatible with PHP 7.4, 8.0, 8.1, 8.2, 8.3, 8.4, 8.5+)
+
+- Any Web Browser: Google Chrome, Microsoft Edge, Firefox, or Brave.
+
+NO Node.js, Docker, Python, or paid services are required!
+
+------------------------------------------------------------------------
+2. HOW TO RUN VIA XAMPP (RECOMMENDED METHOD)
+------------------------------------------------------------------------
+
+STEP 1: Extract Project Folder
+  Extract this entire zip file into your XAMPP "htdocs" directory:
+  Location: C:\xampp\htdocs\doctor_appointment_system
+  (Make sure the folder name inside htdocs is "doctor_appointment_system")
+
+STEP 2: Start Apache and MySQL
+  1. Open the "XAMPP Control Panel" on your computer.
+  2. Click the "Start" button next to "Apache".
+  3. Click the "Start" button next to "MySQL".
+  (Both buttons should turn green with port numbers displayed).
+
+STEP 3: Create & Import the Database
+  1. Open your web browser and go to:
+     http://localhost/phpmyadmin/
+  2. In the left sidebar, click "New" to create a new database.
+  3. Type the Database Name exactly:
+     doctor_appointment_system
+  4. Leave collation as default (utf8mb4_unicode_ci) and click "Create".
+  5. Click on "doctor_appointment_system" in the left sidebar to select it.
+  6. Click the "Import" tab at the top menu.
+  7. Click "Choose File", select:
+     C:\xampp\htdocs\doctor_appointment_system\database\schema.sql
+     Scroll down and click "Import" (or "Go").
+  8. Click the "Import" tab again, click "Choose File", select:
+     C:\xampp\htdocs\doctor_appointment_system\database\sample_data.sql
+     Scroll down and click "Import" (or "Go").
+
+STEP 4: Launch the Application
+  Open your browser and navigate to:
+  http://localhost/doctor_appointment_system/
+
+  That's it! The application is fully live and ready to demonstrate.
+
+------------------------------------------------------------------------
+3. ALTERNATIVE METHOD: RUN VIA PHP BUILT-IN SERVER (INSTANT)
+------------------------------------------------------------------------
+If you already have PHP on your command line or XAMPP PHP:
+
+1. Open PowerShell / Command Prompt inside the project folder.
+2. Run:
+   C:\xampp\php\php.exe -S localhost:8000
+   (or simply: php -S localhost:8000)
+3. Open your browser and go to:
+   http://localhost:8000/
+
+------------------------------------------------------------------------
+4. WORKING DEMO LOGIN CREDENTIALS
+------------------------------------------------------------------------
+On the login page (login.php), there are 1-CLICK DEMO BUTTONS that 
+auto-fill these credentials for you during college presentations:
+
+ROLE                    EMAIL                     PASSWORD     DETAILS
+---------------------   -----------------------   ----------   ----------------------------
+Admin / Receptionist    admin@doccare.com         admin123     Manage clinic, docs, walk-ins
+Doctor (Cardiologist)   doctor.sharma@doccare.com doctor123    Review, confirm, complete
+Doctor (Dermatologist)  doctor.patel@doccare.com  doctor123    Schedule & consultation fee
+Patient                 rahul.verma@example.com   patient123   Book appointments, track status
+Patient 2               priya.singh@example.com   patient123   Patient self-service portal
+
+------------------------------------------------------------------------
+5. PROJECT ACADEMIC REPORT (PDF & HTML)
+------------------------------------------------------------------------
+A complete, pre-formatted academic project report is included:
+
+- PDF Report:  docs/DocCare_Project_Report.pdf (Print-ready document)
+- HTML Report: docs/project_report.html
+
+It includes Abstract, SRS (Hardware/Software), 3-Tier Architecture, 
+Data Dictionary (3NF), Concurrency & Slot Calculation Algorithms, 
+Security Analysis, 13 Test Cases (100% Pass), and Future Scope.
+
+========================================================================
+   SUCCESSFULLY TESTED & VERIFIED ON WINDOWS XAMPP
+========================================================================

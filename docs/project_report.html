@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DocCare - Academic Project Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 18mm 20mm 18mm;
+            @bottom-right {
+                content: counter(page);
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            font-size: 11pt;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+
+        /* Cover Page Styling */
+        .cover-page {
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cover-title-badge {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #1a56db;
+            border: 1px solid #bfdbfe;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-size: 26pt;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .cover-subtitle {
+            font-size: 13pt;
+            color: #475569;
+            margin-bottom: 40px;
+        }
+
+        .cover-meta-box {
+            background-color: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 40px auto;
+            max-width: 550px;
+            text-align: left;
+        }
+
+        .cover-meta-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 10.5pt;
+        }
+
+        .cover-meta-row:last-child {
+            border-bottom: none;
+        }
+
+        .cover-meta-label {
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .cover-meta-val {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .cover-footer {
+            font-size: 10pt;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            color: #0f172a;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 18pt;
+            border-bottom: 2px solid #1a56db;
+            padding-bottom: 6px;
+            color: #1a56db;
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: #1e293b;
+            border-left: 4px solid #1a56db;
+            padding-left: 10px;
+            margin-top: 20px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 12pt;
+            color: #334155;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin: 0 0 12px 0;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 0 0 14px 20px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px 0;
+            font-size: 9.5pt;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 8.5pt;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f8fafc;
+        }
+
+        /* Badges & Highlights */
+        .badge-pass {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 1px solid #86efac;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            display: inline-block;
+        }
+
+        .badge-role {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            display: inline-block;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 3px solid #1a56db;
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 9pt;
+            overflow-x: auto;
+            line-height: 1.45;
+            margin: 12px 0 18px 0;
+            white-space: pre-wrap;
+        }
+
+        .info-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 14px;
+        }
+
+        .info-card-title {
+            font-weight: 700;
+            color: #1a56db;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- 1. COVER PAGE                              -->
+<!-- ========================================== -->
+<div class="cover-page page-break">
+    <div>
+        <div class="cover-title-badge">Academic Project Report</div>
+        <div class="cover-title">DocCare</div>
+        <div style="font-size: 16pt; font-weight: 600; color: #1a56db; margin-bottom: 10px;">
+            Doctor Appointment &amp; Clinical Practice Management System
+        </div>
+        <div class="cover-subtitle">
+            A Web-Based Healthcare Scheduling Solution with Real-Time Slot Engines &amp; Atomic Double-Booking Prevention
+        </div>
+    </div>
+
+    <div class="cover-meta-box">
+        <div class="cover-meta-row">
+            <span class="cover-meta-label">Degree / Program:</span>
+            <span class="cover-meta-val">Master of Computer Applications (MCA) / BCA / B.Tech</span>
+        </div>
+        <div class="cover-meta-row">
+            <span class="cover-meta-label">Domain:</span>
+            <span class="cover-meta-val">Full-Stack Web Development &amp; Healthcare Systems</span>
+        </div>
+        <div class="cover-meta-row">
+            <span class="cover-meta-label">Core Technologies:</span>
+            <span class="cover-meta-val">PHP 8.x, MySQL, Bootstrap 5, Vanilla JS, AJAX</span>
+        </div>
+        <div class="cover-meta-row">
+            <span class="cover-meta-label">Database Name:</span>
+            <span class="cover-meta-val">doctor_appointment_system</span>
+        </div>
+        <div class="cover-meta-row">
+            <span class="cover-meta-label">Architecture:</span>
+            <span class="cover-meta-val">Three-Tier Architecture (MVC Hybrid) with PDO</span>
+        </div>
+        <div class="cover-meta-row">
+            <span class="cover-meta-label">Security:</span>
+            <span class="cover-meta-val">Bcrypt, CSRF Tokens, Prepared Statements, XSS Escaping</span>
+        </div>
+        <div class="cover-meta-row">
+            <span class="cover-meta-label">Local Environment:</span>
+            <span class="cover-meta-val">XAMPP (Apache HTTP Server &amp; MariaDB)</span>
+        </div>
+    </div>
+
+    <div class="cover-footer">
+        Designed &amp; Developed for MCA Academic Examination &bull; Year 2026
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- 2. ABSTRACT & INTRODUCTION                 -->
+<!-- ========================================== -->
+<h1>1. Project Abstract &amp; Introduction</h1>
+
+<h3>1.1 Abstract</h3>
+<p>
+    In conventional outpatient medical centers, scheduling appointments is frequently conducted via manual paper logs or basic telephone requests. These legacy methods suffer from long patient waiting queues, human booking errors, lack of visibility into doctor shift availability, and inadvertent double-booking of time slots. 
+</p>
+<p>
+    <strong>DocCare</strong> is an enterprise-grade clinical management web application engineered using <strong>Core PHP</strong>, <strong>MySQL</strong>, <strong>Bootstrap 5</strong>, and <strong>JavaScript</strong>. The application features comprehensive <strong>Role-Based Access Control (RBAC)</strong> separating three operational roles: <em>Patients</em>, <em>Doctors</em>, and <em>Admin/Receptionists</em>. A real-time asynchronous JavaScript (AJAX) slot calculation engine queries active bookings and suppresses already occupied or elapsed times. Concurrency-safe atomic database validation eliminates double-booking risks.
+</p>
+
+<h3>1.2 Problem Statement</h3>
+<ul>
+    <li><strong>Physical Queue Congestion:</strong> Patients are compelled to visit clinics in person without advance notice of real-time slot occupancy.</li>
+    <li><strong>Double-Booking Vulnerability:</strong> Multiple receptionists or parallel patient submissions often assign the same doctor to two different patients at identical times.</li>
+    <li><strong>Lack of Real-Time Lifecycle Tracking:</strong> Patients remain unaware whether their booking is Pending, Confirmed, Completed, or Cancelled.</li>
+    <li><strong>Disorganized Practice Administration:</strong> Doctors lack centralized oversight over their patient history, daily schedules, and consultation fees.</li>
+</ul>
+
+<h3>1.3 Objectives of Proposed System</h3>
+<ul>
+    <li>To deliver a zero-dependency, professional web portal operating seamlessly on standard XAMPP stacks.</li>
+    <li>To automate consultation slot generation according to individual doctor shift timings (start/end times, working days, and slot duration intervals).</li>
+    <li>To enforce strict data integrity through PDO prepared statements, input sanitization, and Bcrypt password hashing.</li>
+    <li>To provide an intuitive, responsive medical blue-and-white theme accessible across mobile, tablet, and desktop viewports.</li>
+</ul>
+
+<div class="page-break"></div>
+
+<!-- ========================================== -->
+<!-- 3. SYSTEM REQUIREMENTS SPECIFICATION       -->
+<!-- ========================================== -->
+<h1>2. System Requirements Specification (SRS)</h1>
+
+<h3>2.1 Software Specifications</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 30%;">Component</th>
+            <th style="width: 70%;">Specification Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Operating System</strong></td>
+            <td>Microsoft Windows 10/11, Ubuntu Linux, or macOS</td>
+        </tr>
+        <tr>
+            <td><strong>Web Server</strong></td>
+            <td>Apache HTTP Server 2.4.x (via XAMPP) or PHP Built-in Server</td>
+        </tr>
+        <tr>
+            <td><strong>Backend Language</strong></td>
+            <td>Core PHP (PHP 7.4 to PHP 8.5+ compatible)</td>
+        </tr>
+        <tr>
+            <td><strong>Database Management</strong></td>
+            <td>MySQL 5.7+ / MariaDB 10.4+ with InnoDB Storage Engine</td>
+        </tr>
+        <tr>
+            <td><strong>Database Admin Tool</strong></td>
+            <td>phpMyAdmin (Included with XAMPP)</td>
+        </tr>
+        <tr>
+            <td><strong>Frontend Framework</strong></td>
+            <td>Bootstrap 5.3.3 (CSS Grid, Flexbox, Modals, Responsive Navbar)</td>
+        </tr>
+        <tr>
+            <td><strong>Client Scripting</strong></td>
+            <td>Vanilla JavaScript (Fetch API, DOM Event Handlers, Input Filters)</td>
+        </tr>
+        <tr>
+            <td><strong>Iconography</strong></td>
+            <td>Bootstrap Icons v1.11.3 (SVG/WebFont)</td>
+        </tr>
+        <tr>
+            <td><strong>Typography</strong></td>
+            <td>Google Fonts (Outfit for headings, Inter for body copy)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>2.2 Hardware Specifications</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 30%;">Resource</th>
+            <th style="width: 35%;">Minimum Requirement</th>
+            <th style="width: 35%;">Recommended Specification</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Processor</strong></td>
+            <td>Intel Core i3 / AMD Ryzen 3 (1.8 GHz)</td>
+            <td>Intel Core i5 / AMD Ryzen 5 or higher</td>
+        </tr>
+        <tr>
+            <td><strong>RAM Memory</strong></td>
+            <td>4 GB DDR3/DDR4</td>
+            <td>8 GB DDR4 or higher</td>
+        </tr>
+        <tr>
+            <td><strong>Storage</strong></td>
+            <td>500 MB Free Disk Space</td>
+            <td>1 GB SSD Space</td>
+        </tr>
+        <tr>
+            <td><strong>Display Resolution</strong></td>
+            <td>1024 &times; 768 pixels</td>
+            <td>1920 &times; 1080 Full HD (Responsive)</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ========================================== -->
+<!-- 4. SYSTEM ARCHITECTURE                     -->
+<!-- ========================================== -->
+<h1>3. System Architecture &amp; Design</h1>
+<p>
+    The system follows a classic <strong>Three-Tier Layered Architecture</strong> ensuring loose coupling between the presentation layer, application business logic, and persistent database storage:
+</p>
+
+<pre>
++-----------------------------------------------------------------------------------+
+|                           1. PRESENTATION LAYER (CLIENT)                          |
+|   HTML5 Semantic Layouts | Custom Medical CSS3 | Bootstrap 5.3.3 | JavaScript     |
+|   - Dynamic AJAX Slot Selector Grid &amp; Form Validation Handlers                     |
++-----------------------------------------+-----------------------------------------+
+                                          | JSON / HTTP Request
+                                          v
++-----------------------------------------------------------------------------------+
+|                        2. BUSINESS LOGIC LAYER (CORE PHP)                         |
+|   - Authentication &amp; RBAC Gatekeeper (`includes/auth.php`)                         |
+|   - Shift Generator &amp; Concurrency Engine (`includes/functions.php`)               |
+|   - Dynamic API Slot Endpoint (`api/get-slots.php`)                               |
+|   - CSRF Validator &amp; XSS Sanitization Filter (`e()`)                              |
++-----------------------------------------+-----------------------------------------+
+                                          | PDO Prepared Queries
+                                          v
++-----------------------------------------------------------------------------------+
+|                        3. DATA PERSISTENCE LAYER (MYSQL)                          |
+|   Database: `doctor_appointment_system` (InnoDB Engine with Foreign Keys)         |
+|   - `users`: Authentication records &amp; role definitions                            |
+|   - `doctors`: Clinical schedules, consultation fees, and profile records         |
+|   - `appointments`: Booking tickets, timestamps, and lifecycle statuses           |
++-----------------------------------------------------------------------------------+
+</pre>
+
+<div class="page-break"></div>
+
+<!-- ========================================== -->
+<!-- 5. DATABASE DESIGN                         -->
+<!-- ========================================== -->
+<h1>4. Database Design &amp; Data Dictionary</h1>
+<p>
+    The database schema is normalized (3NF) to minimize redundancy while preserving relational integrity via cascading foreign keys and performance-optimized indexes.
+</p>
+
+<h3>4.1 Table: <code>users</code></h3>
+<p>Stores authentication credentials and contact details for all system actors.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>id</code></td>
+            <td>INT</td>
+            <td>PRIMARY KEY, AUTO_INC</td>
+            <td>Unique identifier for the user account</td>
+        </tr>
+        <tr>
+            <td><code>name</code></td>
+            <td>VARCHAR(100)</td>
+            <td>NOT NULL</td>
+            <td>Full legal name of the user</td>
+        </tr>
+        <tr>
+            <td><code>email</code></td>
+            <td>VARCHAR(100)</td>
+            <td>NOT NULL, UNIQUE</td>
+            <td>Unique login email address</td>
+        </tr>
+        <tr>
+            <td><code>phone</code></td>
+            <td>VARCHAR(20)</td>
+            <td>NOT NULL</td>
+            <td>Contact telephone/mobile number</td>
+        </tr>
+        <tr>
+            <td><code>password</code></td>
+            <td>VARCHAR(255)</td>
+            <td>NOT NULL</td>
+            <td>Bcrypt hashed password (60-char hash)</td>
+        </tr>
+        <tr>
+            <td><code>role</code></td>
+            <td>ENUM('patient','doctor','admin')</td>
+            <td>NOT NULL, DEFAULT 'patient'</td>
+            <td>User authorization tier</td>
+        </tr>
+        <tr>
+            <td><code>created_at</code></td>
+            <td>TIMESTAMP</td>
+            <td>DEFAULT CURRENT_TIMESTAMP</td>
+            <td>Registration timestamp</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>4.2 Table: <code>doctors</code></h3>
+<p>Maintains practice parameters, consulting rates, and working schedules.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>id</code></td>
+            <td>INT</td>
+            <td>PRIMARY KEY, AUTO_INC</td>
+            <td>Unique doctor profile ID</td>
+        </tr>
+        <tr>
+            <td><code>user_id</code></td>
+            <td>INT</td>
+            <td>NOT NULL, UNIQUE, FK &rarr; users(id)</td>
+            <td>Foreign key linking to base user account</td>
+        </tr>
+        <tr>
+            <td><code>specialization</code></td>
+            <td>VARCHAR(100)</td>
+            <td>NOT NULL</td>
+            <td>Clinical discipline (e.g. Cardiologist)</td>
+        </tr>
+        <tr>
+            <td><code>qualification</code></td>
+            <td>VARCHAR(100)</td>
+            <td>NOT NULL</td>
+            <td>Degrees (e.g. MBBS, MD, DM)</td>
+        </tr>
+        <tr>
+            <td><code>consultation_fee</code></td>
+            <td>DECIMAL(10,2)</td>
+            <td>NOT NULL, DEFAULT 500.00</td>
+            <td>Fee in INR (₹) per patient visit</td>
+        </tr>
+        <tr>
+            <td><code>available_days</code></td>
+            <td>VARCHAR(255)</td>
+            <td>NOT NULL</td>
+            <td>Comma-separated days (e.g. Mon,Tue,Wed)</td>
+        </tr>
+        <tr>
+            <td><code>start_time</code></td>
+            <td>TIME</td>
+            <td>NOT NULL, DEFAULT '09:00:00'</td>
+            <td>Daily consultation start time</td>
+        </tr>
+        <tr>
+            <td><code>end_time</code></td>
+            <td>TIME</td>
+            <td>NOT NULL, DEFAULT '17:00:00'</td>
+            <td>Daily consultation conclusion time</td>
+        </tr>
+        <tr>
+            <td><code>slot_duration</code></td>
+            <td>INT</td>
+            <td>NOT NULL, DEFAULT 30</td>
+            <td>Duration of each slot in minutes</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td>ENUM('active','inactive')</td>
+            <td>NOT NULL, DEFAULT 'active'</td>
+            <td>Practice status toggle</td>
+        </tr>
+        <tr>
+            <td><code>bio</code></td>
+            <td>TEXT</td>
+            <td>NULL</td>
+            <td>Clinical experience summary</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>4.3 Table: <code>appointments</code></h3>
+<p>Logs consultation bookings and status history.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>id</code></td>
+            <td>INT</td>
+            <td>PRIMARY KEY, AUTO_INC</td>
+            <td>Appointment ticket number</td>
+        </tr>
+        <tr>
+            <td><code>patient_id</code></td>
+            <td>INT</td>
+            <td>NOT NULL, FK &rarr; users(id)</td>
+            <td>Foreign key referencing patient user</td>
+        </tr>
+        <tr>
+            <td><code>doctor_id</code></td>
+            <td>INT</td>
+            <td>NOT NULL, FK &rarr; doctors(id)</td>
+            <td>Foreign key referencing doctor profile</td>
+        </tr>
+        <tr>
+            <td><code>appointment_date</code></td>
+            <td>DATE</td>
+            <td>NOT NULL</td>
+            <td>Scheduled date of consultation</td>
+        </tr>
+        <tr>
+            <td><code>appointment_time</code></td>
+            <td>TIME</td>
+            <td>NOT NULL</td>
+            <td>Scheduled start time of slot</td>
+        </tr>
+        <tr>
+            <td><code>reason</code></td>
+            <td>TEXT</td>
+            <td>NOT NULL</td>
+            <td>Chief complaints / consultation notes</td>
+        </tr>
+        <tr>
+            <td><code>status</code></td>
+            <td>ENUM('Pending','Confirmed', 'Cancelled','Completed')</td>
+            <td>NOT NULL, DEFAULT 'Pending'</td>
+            <td>Lifecycle workflow stage</td>
+        </tr>
+        <tr>
+            <td><code>booked_by</code></td>
+            <td>ENUM('patient','admin')</td>
+            <td>NOT NULL, DEFAULT 'patient'</td>
+            <td>Booking channel originator</td>
+        </tr>
+        <tr>
+            <td><code>created_at</code></td>
+            <td>TIMESTAMP</td>
+            <td>DEFAULT CURRENT_TIMESTAMP</td>
+            <td>Record creation timestamp</td>
+        </tr>
+        <tr>
+            <td><code>updated_at</code></td>
+            <td>TIMESTAMP</td>
+            <td>DEFAULT CURRENT_TIMESTAMP ON UPDATE</td>
+            <td>Last status change timestamp</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ========================================== -->
+<!-- 6. BUSINESS LOGIC & ALGORITHMS             -->
+<!-- ========================================== -->
+<h1>5. Core Algorithms &amp; Business Logic</h1>
+
+<h3>5.1 Real-Time Slot Calculation Logic</h3>
+<p>
+    When a patient selects a doctor and a consultation date, the frontend triggers an asynchronous <code>fetch()</code> request to <code>api/get-slots.php</code>. The backend calculates time intervals dynamically:
+</p>
+<pre>
+1. Verify doctor status is 'active'.
+2. Verify selected_date >= CURRENT_DATE() (Strict past-date rejection).
+3. Compute day_of_week = DATE_FORMAT(selected_date, '%W') (e.g., 'Monday').
+4. Check if day_of_week exists in doctor.available_days list.
+   - If not present: Return message "Doctor is not available on [day]".
+5. Query existing active bookings:
+   SELECT appointment_time FROM appointments 
+   WHERE doctor_id = :id AND appointment_date = :date AND status IN ('Pending', 'Confirmed');
+6. Iterate time from doctor.start_time to doctor.end_time stepping by (doctor.slot_duration * 60 seconds):
+   - IF (date == CURRENT_DATE() AND slot_time <= CURRENT_TIME()):
+       mark slot as passed (disabled).
+   - ELSE IF (slot_time in booked_slots):
+       mark slot as booked (disabled).
+   - ELSE:
+       mark slot as available (selectable radio button).
+7. Return JSON response to client DOM for rendering.
+</pre>
+
+<h3>5.2 Concurrency &amp; Double-Booking Prevention</h3>
+<p>
+    Even if two users view the booking page simultaneously, the system prevents race conditions at the database transaction level through the <code>validate_slot_availability()</code> function:
+</p>
+<pre>
+// Server-Side Pre-Insert Query
+$sql = "SELECT id, status FROM appointments 
+        WHERE doctor_id = ? 
+          AND appointment_date = ? 
+          AND appointment_time = ? 
+          AND status IN ('Pending', 'Confirmed')";
+// If row count > 0: Reject transaction with 'Slot Already Booked' error.
+</pre>
+
+<!-- ========================================== -->
+<!-- 7. SECURITY ARCHITECTURE                   -->
+<!-- ========================================== -->
+<h1>6. Security Implementation</h1>
+<div class="info-card">
+    <div class="info-card-title">1. Bcrypt Password Hashing</div>
+    Passwords are never stored in plaintext. Passwords are encrypted using PHP's native <code>password_hash($pass, PASSWORD_DEFAULT)</code>, generating a secure salted Bcrypt hash ($2y$ format). Verification is performed via <code>password_verify()</code>.
+</div>
+
+<div class="info-card">
+    <div class="info-card-title">2. CSRF (Cross-Site Request Forgery) Token Defense</div>
+    Every form contains an anti-CSRF token generated using cryptographically strong pseudo-random bytes:
+    <code>$_SESSION['csrf_token'] = bin2hex(random_bytes(32));</code>
+    Submissions are verified using timing-attack-safe comparison:
+    <code>hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])</code>.
+</div>
+
+<div class="info-card">
+    <div class="info-card-title">3. SQL Injection Neutralization</div>
+    100% of database interactions are executed using PHP Data Objects (PDO) with prepared statements. Parameter binding isolates SQL instructions from user inputs.
+</div>
+
+<div class="info-card">
+    <div class="info-card-title">4. XSS (Cross-Site Scripting) Defense</div>
+    All user-generated values rendered in HTML pages are wrapped in the global escaping function:
+    <code>function e($str) { return htmlspecialchars((string)$str, ENT_QUOTES, 'UTF-8'); }</code>.
+</div>
+
+<div class="page-break"></div>
+
+<!-- ========================================== -->
+<!-- 8. MODULES & USER ROLES                    -->
+<!-- ========================================== -->
+<h1>7. Module Specifications</h1>
+
+<h3>7.1 Public &amp; Patient Portal</h3>
+<ul>
+    <li><strong>Landing Page (<code>index.php</code>):</strong> Hero banner, search bar, medical specialties, verified trust counters, and featured doctor cards.</li>
+    <li><strong>Doctor Directory (<code>doctors.php</code>):</strong> Search by doctor name or keyword with specialization dropdown filtering.</li>
+    <li><strong>Doctor Profile (<code>doctor-profile.php</code>):</strong> Detailed view showing degrees, clinical bio, consultation fee, and direct booking links.</li>
+    <li><strong>Appointment Booking (<code>patient/book-appointment.php</code>):</strong> Interactive scheduling form with AJAX-loaded time slot buttons.</li>
+    <li><strong>Appointment Tracking (<code>patient/my-appointments.php</code>):</strong> Filterable consultation history with status badges and cancellation actions for pending requests.</li>
+    <li><strong>Profile Settings (<code>patient/profile.php</code>):</strong> Update personal contact information and password.</li>
+</ul>
+
+<h3>7.2 Doctor Practice Portal</h3>
+<ul>
+    <li><strong>Doctor Dashboard (<code>doctor/index.php</code>):</strong> Daily schedule, pending requests alert counter, and instant consultation actions.</li>
+    <li><strong>Pending Requests (<code>doctor/pending-requests.php</code>):</strong> Review booking details with one-click <strong>Confirm</strong> and <strong>Reject</strong> buttons.</li>
+    <li><strong>Confirmed Schedule (<code>doctor/appointments.php</code>):</strong> View upcoming patient contacts and mark appointments as <strong>Completed</strong>.</li>
+    <li><strong>Consultation History (<code>doctor/history.php</code>):</strong> Comprehensive consultation logs with date and status filters.</li>
+    <li><strong>Schedule Configuration (<code>doctor/profile.php</code>):</strong> Update consulting fees, working days, shifts, and slot lengths.</li>
+</ul>
+
+<h3>7.3 Administrator &amp; Receptionist Portal</h3>
+<ul>
+    <li><strong>Hospital Control Center (<code>admin/index.php</code>):</strong> Live counts of active doctors, patients, today's appointments, and pending requests.</li>
+    <li><strong>Doctor Management (<code>admin/doctors.php</code>, <code>add-doctor.php</code>, <code>edit-doctor.php</code>):</strong> Register new doctors, modify clinical details, and toggle active/inactive status.</li>
+    <li><strong>Patient Directory (<code>admin/patients.php</code>):</strong> View patient accounts and booking metrics with quick-booking shortcuts.</li>
+    <li><strong>Master Appointments Log (<code>admin/appointments.php</code>):</strong> Filter clinic appointments by doctor, patient, date, and status.</li>
+    <li><strong>Walk-in Booking (<code>admin/book-appointment.php</code>):</strong> Receptionist booking for existing patients or on-the-spot registration of walk-ins.</li>
+</ul>
+
+<!-- ========================================== -->
+<!-- 9. TESTING & VERIFICATION REPORT           -->
+<!-- ========================================== -->
+<h1>8. Verification &amp; Test Cases Report</h1>
+<p>
+    An automated test runner (<code>tests/test_flow.php</code>) was executed against the database to validate all operational workflows:
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Test Scenario</th>
+            <th>Test Input / Condition</th>
+            <th>Expected Result</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>TC-01</strong></td>
+            <td>Database Connection</td>
+            <td>PDO connection to MySQL</td>
+            <td>Active PDO instance established</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-02</strong></td>
+            <td>Table Verification</td>
+            <td>Verify `users`, `doctors`, `appointments`</td>
+            <td>All 3 tables exist with proper constraints</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-03</strong></td>
+            <td>Admin Authentication</td>
+            <td>`admin@doccare.com` / `admin123`</td>
+            <td>Password verifies &amp; role is 'admin'</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-04</strong></td>
+            <td>Doctor Authentication</td>
+            <td>`doctor.sharma@doccare.com` / `doctor123`</td>
+            <td>Password verifies &amp; role is 'doctor'</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-05</strong></td>
+            <td>Patient Authentication</td>
+            <td>`rahul.verma@example.com` / `patient123`</td>
+            <td>Password verifies &amp; role is 'patient'</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-06</strong></td>
+            <td>Doctor Profile Linkage</td>
+            <td>Check 1-to-1 doctor record for user_id</td>
+            <td>Specialization, fee &amp; schedule returned</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-07</strong></td>
+            <td>Slot Generation</td>
+            <td>Working day query (e.g. Tuesday)</td>
+            <td>Time intervals generated (30 min duration)</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-08</strong></td>
+            <td>Day-Off Rejection</td>
+            <td>Non-working day query (e.g. Sunday)</td>
+            <td>Rejected with "Doctor not available"</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-09</strong></td>
+            <td>Past Date Rejection</td>
+            <td>Date &lt; `CURDATE()`</td>
+            <td>Rejected with "Cannot book past dates"</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-10</strong></td>
+            <td>Double-Booking Check</td>
+            <td>Second booking on identical slot</td>
+            <td>Conflict detected; transaction rejected</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-11</strong></td>
+            <td>Doctor Confirmation</td>
+            <td>Status update on Pending appointment</td>
+            <td>Status changes to 'Confirmed'</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-12</strong></td>
+            <td>Consultation Finish</td>
+            <td>Status update on Confirmed appointment</td>
+            <td>Status changes to 'Completed'</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-13</strong></td>
+            <td>Cancellation &amp; Slot Reuse</td>
+            <td>Appointment marked Cancelled</td>
+            <td>Slot is freed and open for re-booking</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ========================================== -->
+<!-- 10. CONCLUSION & FUTURE ENHANCEMENTS       -->
+<!-- ========================================== -->
+<h1>9. Conclusion &amp; Future Scope</h1>
+<h3>9.1 Conclusion</h3>
+<p>
+    The <strong>DocCare Doctor Appointment System</strong> successfully demonstrates a complete, reliable, and secure web application for modern medical clinic operations. Built strictly with standard web technologies (Core PHP, MySQL, Bootstrap 5, and JavaScript), it requires no third-party framework overhead, making it lightweight and easy to deploy on local XAMPP environments. The automated slot generation, role-based security, and double-booking prevention resolve core challenges encountered in outpatient healthcare management.
+</p>
+
+<h3>9.2 Future Scope</h3>
+<ul>
+    <li><strong>Payment Gateway Integration:</strong> Online payment of consultation fees using UPI, Debit/Credit cards via Razorpay or Stripe.</li>
+    <li><strong>Automated Notifications:</strong> Instant SMS notifications (Twilio) and Email booking confirmations (PHPMailer).</li>
+    <li><strong>Telemedicine Video Consultations:</strong> WebRTC-powered remote video consultations between doctors and patients.</li>
+    <li><strong>E-Prescriptions:</strong> Enabling physicians to generate and attach digital medical prescriptions to completed appointments.</li>
+</ul>
+
+</body>
+</html>
